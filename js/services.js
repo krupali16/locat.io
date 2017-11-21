@@ -180,7 +180,7 @@ function joinGroup(id)
     };
     var grpRef = firebase.database().ref('/groups/' + id + '/members');
     grpRef.update(obj);
-    var userRef = firebase.database().ref('/users/' + memb + '/groups');
+    var userRef = firebase.database().ref('/users/' + memb + '/chats');
     var obj = {
         [id]: true
     };
@@ -286,7 +286,7 @@ function getJoinedGroups()
     }
     var memb = user.uid;
     var database = firebase.database();
-    var grpRef = database.ref('/users/' + memb + '/groups');
+    var grpRef = database.ref('/users/' + memb + '/chats');
     grpRef.on('value', function(snapshot)
     {
         var num_groups = snapshot.numChildren();
