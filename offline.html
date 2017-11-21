@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	@import url('https://fonts.googleapis.com/css?family=Raleway');
+	body{
+		padding: 0;
+		margin: 0;
+	}
+		.offline{
+			width: 30%;
+			margin: 0 auto;
+			background: black;
+			color: white;
+			border-radius: 0.2rem;
+			padding: 0.6rem;
+			font-family: 'Raleway', sans-serif;
+			cursor: pointer;
+			position: fixed;
+			left: 50%;
+    		transform: translate(-50%, 0);
+		}
+
+		.offline-left{
+			display: inline-block;
+			width: 70%;
+		}
+
+		.signal{
+			width: 1rem;
+			height: 1rem;
+			border-radius: 50%;
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.status-text{
+			vertical-align: middle;
+		}
+
+		.signal.red{
+			background-color: #E24949;
+		}
+
+		.offline-right{
+			display: inline-block;
+			background: #333333;
+			width: 25%;
+			text-align: center;
+			padding: 0.5rem;
+		}
+
+	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/offline-js/0.7.19/themes/offline-theme-dark.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/offline-js/0.7.19/themes/offline-language-english.min.css" />
+	<script type="text/javascript" src="js/vendor/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/offline-js/0.7.19/offline.min.js"></script>
+</head>
+<body>
+	<!-- <div class="offline">
+		<div class="offline-left">
+			<span class="signal red"></span>
+			<span class="status-text">Your device lost its internet connection.</span>
+		</div>
+		<div class="offline-right">
+			<span>Reconnecting</span>
+		</div>
+	</div> -->
+</body>
+<!-- <script type="text/javascript">
+	var connectivity = function(){
+	if(navigator.onLine==true){
+		$('div.offline').hide()
+	}
+
+	else if(navigator.onLine == false){
+		$('div.offline').show()
+	}
+}
+
+setInterval(connectivity, 3000);
+</script> -->
+<script>
+	var run = function(){
+ if (Offline.state === 'up')
+ Offline.check();
+ }
+ setInterval(run, 5000);
+</script>
+</html>

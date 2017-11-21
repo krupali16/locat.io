@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LOcat</title>
+	<link rel="stylesheet" type="text/css" href="css/vendor/foundation.min.css" />
+	<link rel="stylesheet" href="css/bubbles.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+	<script type="text/javascript" src="js/vendor/jquery.js"></script>
+	<script type="text/javascript" src="js/vendor/foundation.min.js"></script>
+	<script src="https://unpkg.com/flatpickr"></script>
+	<script type="text/javascript" src="js/vendor/what-input.js"></script>
+</head>
+<body class="servicesbody">
+	<div class="reveal small" id="shutdown" data-reveal data-close-on-click="true">
+	  <h4>Do you want to logout?</h4>
+	  <a class="button success" href="#">Confirm</a>
+	  <a class="button alert" href="#">Cancel</a>
+	  <button class="close-button" data-close aria-label="Close reveal" type="button">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+
+	<div class="title-bar">
+	    <span class="title-bar-title">Vishal Garg</span>
+	  <div class="title-bar-right">
+	    <a><i class="fa fa-power-off" data-toggle="shutdown" aria-hidden="true"></i></a>
+	  </div>
+	</div>
+
+	<div class="grid-x">
+		<div class="small-3 cell" id="leftpane">
+
+			<div id="lister" class="scroll">
+				
+
+
+
+
+
+			</div>
+
+			<div id="bottom-nav">
+				<div class="grid-x text-center">
+					<div class="small-3" title="ASK!" data-tag="ask" data-pane="#pane1"><img src="resources/questions.png" alt="ask"></div>
+					<div class="small-3" title="CHAT" data-tag="chat" data-pane="#pane2"><img src="resources/chat.png" alt="chat"></div>
+					<div class="small-3" title="NEARBY" data-tag="nearby" data-pane="#pane3"><img src="resources/nearby.png" alt="nearby"></div>
+					<div class="small-3"  title="SETTINGS" data-tag="settings" data-pane="#pane4"><img src="resources/settings.png" alt="settings"></div>
+				</div>
+			</div>
+
+
+		</div>
+
+
+		<div class="small-9 cell" id="rightpane">
+
+			<div id="default" class="pane-stack">
+				<h1 class="text-center" style="font-family: Quicksand; color: white;">Select an option from the navigation bar.</h1>
+			</div>
+
+			<div id="pane1" class="pane-stack">
+				
+				<div class="askquestion">
+					<div class="question-title">This is a question. Or is it?</div>
+					<div class="question-description">This is a description.</div>
+					<br />
+					<div class="stat-info">
+						<span><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; 21:36, 21st November, 2017</span>
+					</div>
+				</div>
+
+
+
+			</div><!--  pane1 end -->
+
+			<div id="pane2" class="pane-stack">
+				<div class="chat scroll" id="scrollheight">
+
+				</div>
+
+				<div class="chatinput grid-x">
+					<div class="small-10 cell">
+						<input id="inputbar" placeholder="Type your message here..." type="text" name="" />
+					</div>
+					<div class="small-1 cell text-center">
+						<a class="button primary large" id="sendbtn" href="#">Send</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="pane3" class="pane-stack">
+				<div class="fabbtn" data-open="addgroup">
+				  <div class="fab-icon">
+				    +
+				  </div>
+				 </div>
+			</div>
+
+			<div id="pane4" class="pane-stack">
+				pane4
+			</div>
+		</div>
+
+	</div><!-- grid end -->
+
+
+<div class="reveal" id="addgroup" data-reveal>
+	<h3>Create new group</h3>
+	<form>
+		<label for="groupname">Group name</label>
+		<input type="text" placeholder="Write your question" name="groupname">
+		<label for="description">Description</label>
+		<textarea rows="5" name="description" placeholder="What is the group about?"></textarea>
+		<label for="radius">Radius</label>
+		<select name="radius">
+			<option value="1">1 Km</option>
+			<option value="2">2 Km</option>
+			<option value="3">3 Km</option>
+			<option value="4">4 Km</option>
+			<option value="5">5 Km</option>
+			<option value="6">6 Km</option>
+			<option value="7">7 Km</option>
+			<option value="8">8 Km</option>
+			<option value="9">9 Km</option>
+			<option value="10">10 Km</option>
+		</select>
+		<div class="revealbtn">
+			<a class="button" id="creategroup" href="#">Create group</a>	
+		</div>
+	</form>
+	
+	
+	<button class="close-button" data-close aria-label="Close modal" type="button">
+    	<span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAq3WTrIufXD2m3d7ZaoVQgiu821ek-KAg",
+    authDomain: "locat-d07df.firebaseapp.com",
+    databaseURL: "https://locat-d07df.firebaseio.com",
+    projectId: "locat-d07df",
+    storageBucket: "locat-d07df.appspot.com",
+    messagingSenderId: "636473563257"
+  };
+  firebase.initializeApp(config);
+</script>
+<script type="text/javascript" src="js/generator.js"></script>
+<script type="text/javascript" src="js/services.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/listener.js"></script>
+</body>
+</html>

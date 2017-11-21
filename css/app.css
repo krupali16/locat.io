@@ -1,0 +1,646 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+body{
+  overflow: hidden;
+}
+
+#default>h1{
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+.servicesbody{
+  background: url('../resources/background.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+
+table tbody tr:nth-child(even){
+  background-color: transparent !important; //override foundation
+}
+
+.title-bar{
+  background-color: #1E222B;
+}
+
+.hero-full-screen {
+  height: 70vh;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: url('../resources/hero.jpg') center bottom no-repeat;
+  background-size: cover;
+}
+
+.hero-full-screen .middle-content-section {
+  text-align: center;
+  color: white;
+}
+
+.middle-content-section > h1{
+  font-family: 'Raleway', sans-serif;
+}
+
+.middle-content-section > h3{
+  font-family: 'Quicksand', sans-serif;
+}
+
+#socialize{
+  font-family: Arial;
+  background: #F62459;
+  border-radius: 4px
+}
+
+#socialize:hover{
+  background: #dd4c70;
+}
+
+.hero-full-screen .top-content-section {
+  width: 100%;
+}
+
+#heromenu > li > a{
+  font-family: 'Raleway', sans-serif;
+  color: black !important;
+}
+
+.hero-full-screen .bottom-content-section svg {
+  height: 3.75rem;
+  width: 3.75rem;
+  fill: #fefefe;
+}
+
+.hero-full-screen .top-bar {
+  background: transparent;
+}
+
+.hero-full-screen .top-bar .menu {
+  background: transparent;
+}
+
+.hero-full-screen .top-bar .menu-text {
+  color: #fefefe;
+}
+
+.hero-full-screen .top-bar .menu li {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.hero-full-screen .top-bar .menu a {
+  color: #fefefe;
+  font-weight: bold;
+}
+
+
+
+.grid-x{
+  justify-content: center;
+}
+.marketing-site-features {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.marketing-site-features .fa {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #1779ba;
+}
+
+.marketing-site-features .marketing-site-features-title {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 40em) {
+  .marketing-site-features {
+    text-align: left;
+  }
+}
+
+.marketing-site-features-headline {
+  text-align: center;
+  font-size: 24px;
+}
+
+.marketing-site-features-subheadline {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.center{
+  text-align: center;
+}
+
+.googleplay{
+  width: 15rem;
+  margin: 0 auto;
+}
+
+.signin{
+  width: 15rem;
+  margin: 0 auto;
+}
+
+#firstLogin{
+  border-radius: 1.2rem;
+}
+
+
+.translucent-form-overlay {
+  max-width: 500px;
+  width: 100%;
+  background-color: black;
+  padding: 20px;
+  color: #fefefe;
+}
+
+.translucent-form-overlay .columns.row {
+  display: block;
+}
+
+.translucent-form-overlay h3, .translucent-form-overlay label {
+  color: #fefefe;
+}
+
+.translucent-form-overlay input, .translucent-form-overlay select {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input::-webkit-input-placeholder {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input:-ms-input-placeholder {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input::placeholder {
+  color: #8a8a8a;
+}
+
+#lister{
+  height: 86%;
+  overflow-y: auto;
+}
+
+#leftpane{
+  height: 100vh;
+  position: relative;
+  background-color: rgba(36,43,51,0.8);
+}
+
+#rightpane{
+  height: 95vh;
+}
+
+
+.pane-stack:not(:first-of-type){
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+#pane1, #pane2, #pane3, #pane4{
+  background: #EFF0F4;
+  height: 100%;
+  position: relative;
+  opacity: 0.8;
+}
+
+.talktext>*{
+  display: inline-block;
+}
+
+.talktext>p{
+  font-family: 'Quicksand', sans-serif;
+}
+
+.displayname{
+  display: block;
+  font-weight: bold;
+  font-family: 'Raleway', sans-serif;
+}
+
+.bubbleleft{
+  background: #fff;
+}
+
+.bubbleright{
+  color: white;
+  background: #0084FF;
+}
+
+.item.left{
+  text-align: left;
+}
+
+.item.right{
+  text-align: right;
+}
+
+.item.center{
+  text-align: center;
+}
+
+#bottom-nav>div>div{
+  padding-bottom: 0.8rem;
+  cursor: pointer;
+}
+
+#bottom-nav>div>div>a>img{
+  width: 50px;
+  height: 50px;
+}
+
+#inputbar{
+  height: 3.4rem;
+  border-radius: 5px;
+  margin: 0;
+}
+
+#sendbtn{
+  border-radius: 5px;
+}
+
+.chatinput{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 1rem;
+  background-color: white;
+}
+
+.listcard{
+  width: 100%;
+  padding: 1rem;
+  list-style-type: none;
+  border-bottom: 1px solid #2C3E50;
+  color: white;
+}
+
+#lister>ul{
+  margin: 0;
+}
+
+.listcard:hover{
+  cursor: pointer;
+  background: #252932;
+}
+
+
+.listcard-image>img{
+  border-radius: 50%;
+  display: inline;
+  height: 64px;
+  width: 64px;
+}
+
+.listcard-content{
+    display: inline;
+    margin-left: 0.9rem;
+    margin-top: 20rem;
+}
+
+.listcard-preview{
+  font-size: 0.9em;
+  display: inline-block;
+}
+
+.listcard-preview>strong{
+  text-transform: capitalize;
+}
+
+.listcard-title{
+  font-weight: bold;
+  display: block;
+  font-family: 'Quicksand', sans-serif;
+  text-transform: capitalize;
+}
+
+.leftcontent, .rightcontent{
+  display: inline-block;
+}
+
+.rightcontent{
+  float: right;
+}
+
+.chat{
+  height: 90%;
+  overflow-y: scroll;
+}
+
+.active{
+  border-left: 4px solid #0084FF;
+}
+
+.activeMenu{
+  border-bottom: 4px solid #0084FF; 
+}
+
+
+#shutdown{
+  width: 15%;
+  background: #E4F1FE;
+  border-radius: 8px;
+  text-align: center;
+}
+
+#shutdown>h4{
+  font-size: 1.2rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+#shutdown>a{
+  color: white;
+  border-radius: 5px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.basic{
+  background-color: rgba(36,43,51,0.9);
+  padding: 0.8rem;
+}
+
+.userimg{
+  text-align: center;
+}
+.userimg>img{
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+}
+
+.username, .userlocation{
+  color: white;
+  text-align: center;
+  font-size: 1.4rem;
+  -
+  text-transform: capitalize;
+}
+
+.userlocation{
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.1rem;
+}
+
+.advanced{
+  padding: 0.6rem;
+}
+
+
+.advanced>.grid-x>.cell{
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.3rem;
+  text-align: right;
+  color: white;
+}
+
+.advanced > div + div{
+  margin-bottom: 1rem;
+}
+
+.advanced>.strip{
+  background: #cdcdcd;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.2rem;
+  width: 80%;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.advanced>.grid-x>.cell:nth-of-type(odd){
+  text-align: left;
+}
+
+/*//buttons for profile page*/
+
+.buttons{
+  text-align: center;
+}
+
+.save{
+  background-color: #87D37C;
+  border-radius: 4px;
+  font-family: 'Quicksand', sans-serif;
+  margin-right: 0.6rem;
+}
+
+.save:hover{
+  background: #26A65B;
+}
+
+.deactivate{
+  background-color: #F64747;
+  border-radius: 4px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.deactivate:hover{
+  background-color: #F03434;
+}
+
+
+
+
+
+
+.scroll::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+.scroll::-webkit-scrollbar
+{
+  width: 12px;
+  background-color: #22313F;
+}
+
+.scroll::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #22313F;
+}
+
+.fa.fa-power-off{
+  color: white;
+  font-size: 1.5rem;
+}
+
+
+.updatestatus{
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.3rem;
+  color: white;
+}
+
+
+/* fabbtn */
+
+.fabbtn{
+  border-radius: 50%;
+  display: inline-block;
+  height: 70px;
+  width: 70px;
+  background-color: #2196F3; 
+  color: white;
+  text-align: center;
+  box-shadow: 0px 2px 5px 0px #22313F;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+
+}
+
+.fabbtn:hover{
+  background-color: #51adf6;
+  cursor: pointer;
+}
+
+.fabbtn:active{
+  background-color: #9acffa;
+}
+
+.fab-icon{
+  font-size: 3.2rem;
+  line-height: 70px;
+  vertical-align: middle; 
+}
+
+#addgroup{
+  background-color: rgba(0,0,0,0.8);
+  padding: 1.5rem;
+  border-radius: 1.2rem;
+  border: none;
+  box-shadow: 0px 4px 10px 0px #000;
+}
+
+#addgroup>h3{
+  text-align: center;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+}
+
+#addgroup>input, #addgroup>textarea, #addgroup>select{
+  border-radius: 0.5rem;
+}
+
+#addgroup>button{
+  color: white;
+  font-size: 1.8rem;
+}
+
+#addgroup>label{
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.2rem;
+}
+
+.revealbtn{
+  text-align: center;
+}
+
+.revealbtn>a{
+  color: white;
+  border-radius: 0.5rem;
+  background-color: #3A539B;
+  font-family: 'Raleway', sans-serif;
+}
+
+textarea{
+  resize: none;
+}
+
+
+
+
+.card-flex-article{
+  border-radius: 10px;
+  margin: 0.4rem;
+}
+
+
+.card-flex-article .card-divider {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: transparent;
+}
+
+.card-flex-article .card-divider p {
+  margin-bottom: 0;
+}
+
+.card-flex-article .card-divider .avatar {
+  margin-right: 0.75rem;
+}
+
+.card-flex-article .avatar {
+  position: relative;
+}
+
+.card-flex-article .avatar img {
+  border-radius: 50%;
+}
+
+.card-flex-article .card-actions .fa:not(:last-of-type) {
+  margin-right: 1rem;
+}
+
+
+.card-flex-article .card-section .article-title {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.card-flex-article .card-section .article-details {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  padding-bottom: 0.75rem;
+}
+
+
+.card-flex-article .card-section .article-summary {
+  font-family: 'Raleway', sans-serif;
+  overflow: hidden;
+  font-size: 1rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-flex-article .user-info {
+  font-size: 0.75rem;
+}
+
+.card-flex-article .user-info .user-name {
+  font-weight: bold;
+  margin-bottom: 0;
+}
