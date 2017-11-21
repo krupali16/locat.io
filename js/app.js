@@ -6,6 +6,10 @@ $(document).ready(function()
         altInput: true,
         dateFormat: "Y.m.d"
     });*/
+
+
+
+    //for message replies to group
     $(document).on('click', '#sendbtn', function()
     {
         if ($.trim($('#inputbar').val()) != '')
@@ -13,13 +17,24 @@ $(document).ready(function()
             sendMsg(localStorage.getItem('activeidentifier'), $('#inputbar').val())
         }
         $('#inputbar').val('')
+        document.getElementById('askscroller').scrollTop = document.getElementById('askscroller').scrollHeight;
     });
-    $(document).on('click', '.nearbylist', function()
+
+
+
+    //for comment replies to ask
+    $(document).on('click', '#sendreplies', function()
     {
-        var groupid = $(this).attr('data-identifier')
-        joinGroup(groupid);
-        $('[data-tag=chat]').trigger('click');
+        if ($.trim($('#inputbarask').val()) != '')
+        {
+            saveAnswer(localStorage.getItem('activequestionidentifier'), $('#inputbarask').val())
+        }
+        $('#inputbarask').val('')
     });
+
+
+
+    //for message replies to group
     $('#inputbar').keypress(function(e)
     {
         if (e.which == 13)
@@ -29,29 +44,42 @@ $(document).ready(function()
                 sendMsg(localStorage.getItem('activeidentifier'), $('#inputbar').val())
             }
             $('#inputbar').val('')
+            document.getElementById('askscroller').scrollTop = document.getElementById('askscroller').scrollHeight;
         }
     });
 
+
+    //for comment replies to ask
+    $('#inputbarask').keypress(function(e)
+    {
+        if (e.which == 13)
+        {
+            if ($.trim($('#inputbarask').val()) != '')
+            {
+                saveAnswer(localStorage.getItem('activequestionidentifier'), $('#inputbarask').val())
+            }
+            $('#inputbarask').val('')
+        }
+    });
+
+
+
+
+
+    $(document).on('click', '.nearbylist', function()
+    {
+        var groupid = $(this).attr('data-identifier')
+        joinGroup(groupid);
+        $('[data-tag=chat]').trigger('click');
+    });
+
+
     //swap display panes for msg
+
     $(document).on('click', '.listcard.joinedlist', function(e){
         e.preventDefault();
         $('.pane-stack').hide();
         $('#pane2').show()
-    });
-
-    //swap display panes for questions - ask
-
-    $(document).on('click', '.questioncard', function(e){
-        e.preventDefault();
-        $('.pane-stack').hide();
-        $('#pane1').show()
-    });
-
-
-    $(document).on('click', '.listcard.joinedlist', function(e)
-    {
-        e.preventDefault();
-        //$(this).find('.notificationbadge').remove()
         var identifier = $(this).attr('data-identifier')
         var identifiername = $(this).find('.listcard-title').text()
         localStorage.setItem('activeidentifier', identifier)
@@ -69,6 +97,30 @@ $(document).ready(function()
         }
     });
 
+    //swap display panes for questions - ask
+
+    $(document).on('click', '.questioncard', function(e){
+        e.preventDefault();
+        $('.pane-stack').hide();
+        $('#pane1').show();
+        var identifier = $(this).attr('data-question');
+        localStorage.setItem('activequestionidentifier', identifier);
+        if ($(this).hasClass('active'))
+        {
+            console.log('do nothing')
+        }
+        else
+        {
+            $('#pane1>.chat.scroll').html('')
+            $('.questioncard').removeClass('active');
+            $(this).addClass('active')
+            onlyquestionappender();
+            getAnswer(identifier);
+        }
+    });
+
+
+
     $(document).on('click', '#bottom-nav>div>div', function()
     {
         $('.pane-stack').hide(); //to hide chat right pane when other options are clicked.
@@ -82,8 +134,8 @@ $(document).ready(function()
                 $('#lister').append('<ul></ul>');
             }
             $('#lister>ul').html('');
-
-            listNearByQuestions()
+            listNearByQuestions();
+            $('#pane1>.chat.scroll').html('')
         }
         if ($(this).attr('data-tag') == "nearby")
         {
@@ -94,6 +146,7 @@ $(document).ready(function()
             }
             $('#lister>ul').html('');
             fetchGroups();
+            $('#pane3').show()
         }
         else if ($(this).attr('data-tag') == "chat")
         {
@@ -104,7 +157,7 @@ $(document).ready(function()
             }
             $('#lister>ul').html('');
             getJoinedGroups();
-            $('.chat.scroll').html('')
+            $('#pane2>.chat.scroll').html('')
         }
         else if ($(this).attr('data-tag') == "settings")
         {

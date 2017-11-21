@@ -579,7 +579,7 @@ textarea{
 
 .card-flex-article{
   border-radius: 10px;
-  margin: 0.4rem;
+  margin: 1rem;
 }
 
 
@@ -643,4 +643,79 @@ textarea{
 .card-flex-article .user-info .user-name {
   font-weight: bold;
   margin-bottom: 0;
+}
+
+.askquestion{
+  color: white;
+  background: rgba(137, 196, 244, 0.3);
+  margin: 1.5rem;
+  box-shadow: 0px 2px 5px 0px #000;
+  padding: 1.4rem;
+  border-radius: 6px;
+}
+
+.askquestion .question-title{
+  font-size: 1.6rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bolder;
+}
+
+.askquestion .question-description{
+  font-family: 'Quicksand', sans-serif;
+}
+
+.askquestion .stat-info{
+  font-size: 0.8rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.askreply{
+  margin: 1.5rem;
+  box-shadow: 0px 2px 5px 0px #000;
+  padding: 1.4rem;
+  color: white;
+  background: rgba(137, 196, 244, 0.3);
+}
+
+h3.repliestag{
+  width: 100%;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.1rem;
+  text-align: center;
+  padding: 0.2rem;
+}
+
+.replyunit{
+  box-shadow: 0px 2px 5px 0px #000;
+  padding: 0.5rem;
+  background-color: rgba(34, 49, 63, 0.9);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.replyuser{
+  width: 50px;
+  height: 50px;
+  width: 100%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.1rem;
+}
+
+.replyuser>*{
+  display: inline-block;
+}
+
+.replyuser>img{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.replycomment{
+  font-family: 'Quicksand', sans-serif;
+}
+
+#pane1{
+  background-color: transparent;
 }

@@ -18,9 +18,10 @@ var nearbygenerator = function(object){
 
 
 var joinedListgenerator = function(object){
+	console.log(object)
 		var htmlwithactive = 
 			'<li class="listcard joinedlist active" ' + "data-identifier=" + object[0]['uniqueidentifier'] + '>' + 
-				'<span class="listcard-image"><img src="resources/pic1.png"></span>' +
+				'<span class="listcard-image"><img src="'+ (object[0].image_url=="default"? 'http://placehold.it/150x150': object[0].image_url)  + '"></span>' +
 				'<div class="listcard-content">' + 
 					'<span class="leftcontent">' + 
 						'<span class="listcard-title">' + object[0]['group_name'] +  '</span>' + 
@@ -33,7 +34,7 @@ var joinedListgenerator = function(object){
 
 			var htmlnotactive = 
 			'<li class="listcard joinedlist" ' + "data-identifier=" + object[0]['uniqueidentifier'] + '>' + 
-				'<span class="listcard-image"><img src="resources/pic1.png"></span>' +
+				'<span class="listcard-image"><img src="'+ (object[0].image_url=="default"? 'http://placehold.it/150x150':object[0].image_url)  + '"></span>' +
 				'<div class="listcard-content">' + 
 					'<span class="leftcontent">' + 
 						'<span class="listcard-title">' + object[0]['group_name'] +  '</span>' + 
@@ -62,13 +63,14 @@ var joinedListgenerator = function(object){
 
 
 var messagesGenerator = function(object){
+	console.log(object)
 	if(localStorage.getItem('personalidentifier')!=object.sender_id){
 		var html =
 		'<div class="item left">'+
 			'<div class="talk-bubble tri-right left-top bubbleleft">'+
 			  '<div class="talktext">'+
 			  	'<span class="displayname">' + object.sender_name + '</span>' +
-			    '<p>' + object.message + '</p>' + 
+			    '<p>' + (object.message_type=="image"? '<img src="'+ object.image_url+'"' : object.message) + '</p>' + 
 			  '</div>'+
 			'</div>' + 
 		'</div>';
@@ -86,7 +88,7 @@ var messagesGenerator = function(object){
 		'</div>';
 	}
 
-	$('.chat.scroll').append(html);
+	$('#pane2>.chat.scroll').append(html);
 	document.getElementById('scrollheight').scrollTop = document.getElementById('scrollheight').scrollHeight;
 }
 
@@ -201,12 +203,12 @@ $('#dob').flatpickr({
 
 var askgenerator = function(object){
 	var ask = 
-			'<div class="card-flex-article card questioncard data-question="'+object.identifier+'">'+
+			'<div class="card-flex-article card questioncard" data-question="'+object.identifier+'">'+
 			  '<div class="card-section">'+
 			    '<h3 class="article-title">'+ object.questionText + '</h3>'+
 			    '<div class="article-details">'+
-			      '<span class="time">21:36, 21st November, 2017</span> &#8226;'+
-			      '<span class="website">0 views</span> &#8226;'+
+			      '<span class="time">' + new Date(object.timestamp).toLocaleString('en-GB') + '</span>&nbsp;&#8226;'+
+			      '<span class="website">0 views</span>&nbsp;&#8226;'+
 			      '<span class="author">'+ object.answerCount + ' answers</span>'+
 			    '</div>'+
 			    '<p class="article-summary">' + object.description + '</p>'+
@@ -227,6 +229,38 @@ var askgenerator = function(object){
 
 
 var askfullgenerator = function(object){
-	var questioncomlete = 'complete';
-	//$('#lister').append(ask);
+	if($('#pane1>.chat.scroll').find('.askquestion').length==0){
+			onlyquestionappender();
+	}
+		var replies = 
+				
+		'<div class="replyunit">'+
+		'<div class="replyuser">'+
+			'<img src="'+object.image_url+'">'+
+			'&nbsp;&nbsp;&nbsp;<span>'+ object.userName +'</span>'+
+		'</div>'+
+		'<div class="replycomment">'+
+			object.comment +
+		'</div>';
+
+		$('#pane1>.chat.scroll>.askreply').append(replies);
+}
+
+var onlyquestionappender = function(){
+	var questioncomplete = 
+				'<div class="askquestion">'+
+					'<div class="question-title">This is a question. Or is it?</div>'+
+					'<div class="question-description">This is a description.</div>'+
+					'<br />'+
+					'<div class="stat-info">'+
+						'<span><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; 21:36, 21st November, 2017</span>'+
+						'<span><i class="fa fa-eye" aria-hidden="true"></i>&nbsp; 0 views</span>'+
+						'<span><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp; 0 answers</span>'+
+					'</div>'+
+				'</div>'+
+				'<div class="askreply">'+
+					'<h3 class="repliestag">Replies</h3>'+
+					'</div>'+
+				'</div>';
+		$('#pane1>.chat.scroll').append(questioncomplete);
 }
