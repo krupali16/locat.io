@@ -505,7 +505,7 @@ function saveQuestion(question, description, radius)
             questionText: question,
             longitude: longitude,
             latitude: latitude,
-            radius: radius,
+            radius: parseInt(radius),
             user: localStorage.getItem('personalidentifier'),
             answers: '',
             description: description,
