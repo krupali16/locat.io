@@ -11,9 +11,11 @@ function signout()
 {
     firebase.auth().signOut().then(function()
     {
-        //if successful
+        redirect('./index.html');
+
     }).catch(function(error)
     {
+        redirect('/index.html');
         //unsuccessful
     });
 }
@@ -26,7 +28,7 @@ function loginWithGoogle()
     {
         var user = result.user;
         var displayName = user.displayName;
-        localStorage.setItem('googlename', displayName)
+        localStorage.setItem('googlename', displayName);
         var uuid = user.uid;
         var email = user.email;
         var image_url = user.photoURL;
@@ -129,6 +131,8 @@ function createGroup(group_name, description, radius)
     var user = firebase.auth().currentUser;
     var group_id = database.ref("groups").push().key;
     var groupsRef = database.ref("groups");
+    var usersRef = database.ref("users/"+ user.uid + "/chats");
+
     if (!navigator.geolocation)
     {
         alert("Geolocation is not supported by your browser");
@@ -155,7 +159,9 @@ function createGroup(group_name, description, radius)
             },
             create_date: firebase.database.ServerValue.TIMESTAMP
         }
-        groupsRef.child(group_id).set(group);
+
+        groupsRef.child(group_id).set(group);   
+        usersRef.child(group_id).set(true);
         alert('Group created.')
     }
 
@@ -226,7 +232,8 @@ function fetchGroups()
                     'groupname': groups['name'],
                     'radius': groups['radius'],
                     'description': groups['description'],
-                    'uniqueidentifier': groups.group_id
+                    'uniqueidentifier': groups.group_id,
+                    'image_url': groups.image_url
                 }
                 nearbygenerator(obj);
             }
@@ -472,25 +479,53 @@ function listNearByQuestions()
     navigator.geolocation.getCurrentPosition(success, error);
 }
 
-function saveQuestion()
+function saveQuestion(question, description, radius)
 {
-    questionElement = document.getElementById('question-title');
-    radiusElement = document.getElementById('question_tags');
-    descriptionElement = document.getElementById('question-details');
-    var newQuestionRef = ref.push(); //create new ref
-    newQuestionRef.set(
-    { //save content to firebase
-        questionText: questionElement.value,
-        longitude: this.longitude,
-        latitude: this.latitude,
-        radius: radiusElement.value,
-        user: localStorage.getItem('personalidentifier'), //static refernece of user
-        answers: '',
-        description: descriptionElement.value,
-        views: 0,
-        answerCount: 0,
-        timestamp: firebase.database.ServerValue.TIMESTAMP,
-        userName: localStorage.getItem('personalidentifiername')
+    var image;
+    var usersRef = firebase.database().ref('users/'+ localStorage.getItem('personalidentifier') + '/image_url');
+    var ref = firebase.database().ref('questions');
+    usersRef.once('value', snapshot =>
+    {
+        image = snapshot.val()
+    }).then(function(){
+
+    if (!navigator.geolocation)
+    {
+        alert("Geolocation is not supported by your browser");
+        return;
+    }
+
+    function success(position)
+    {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var newQuestionRef = ref.push(); //create new ref
+        newQuestionRef.set(
+        { //save content to firebase
+            questionText: question,
+            longitude: longitude,
+            latitude: latitude,
+            radius: radius,
+            user: localStorage.getItem('personalidentifier'),
+            answers: '',
+            description: description,
+            views: 0,
+            answerCount: 0,
+            timestamp: firebase.database.ServerValue.TIMESTAMP,
+            userName: localStorage.getItem('personalidentifiername'),
+            image_url: image
+        });
+        alert("saved");
+    }
+
+    function error()
+    {
+        alert("Unable to retrieve your location")
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error);
+
+        
     });
-    alert("saved");
+    
 }

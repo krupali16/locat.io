@@ -14,18 +14,129 @@
 	<script type="text/javascript" src="js/vendor/what-input.js"></script>
 </head>
 <body class="servicesbody">
+
+
+
 	<div class="reveal small" id="shutdown" data-reveal data-close-on-click="true">
 	  <h4>Do you want to logout?</h4>
-	  <a class="button success" href="#">Confirm</a>
+	  <a class="button success" href="#" id="confirmsignout">Confirm</a>
 	  <a class="button alert" href="#">Cancel</a>
 	  <button class="close-button" data-close aria-label="Close reveal" type="button">
 	    <span aria-hidden="true">&times;</span>
 	  </button>
 	</div>
 
+
+
+	<div class="reveal" id="addgroup" data-reveal>
+		<h3>Create new group</h3>
+		<form>
+			<label for="groupname">Group name</label>
+			<input type="text" placeholder="Group name" name="groupname">
+			<label for="description">Description</label>
+			<textarea rows="5" name="description" placeholder="What is the group about?"></textarea>
+			<label for="radius">Radius</label>
+			<select name="radius">
+				<option value="1">1 Km</option>
+				<option value="2">2 Km</option>
+				<option value="3">3 Km</option>
+				<option value="4">4 Km</option>
+				<option value="5">5 Km</option>
+				<option value="6">6 Km</option>
+				<option value="7">7 Km</option>
+				<option value="8">8 Km</option>
+				<option value="9">9 Km</option>
+				<option value="10">10 Km</option>
+			</select>
+			<div class="revealbtn">
+				<a class="button" id="creategroup" href="#">Create group</a>	
+			</div>
+		</form>
+		
+		
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+	    	<span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+
+
+	<div class="reveal" id="addgroup" data-reveal>
+		<h3>Create new group</h3>
+		<form>
+			<label for="groupname">Group name</label>
+			<input type="text" placeholder="Group name" name="groupname">
+			<label for="description">Description</label>
+			<textarea rows="5" name="description" placeholder="What is the group about?"></textarea>
+			<label for="radius">Radius</label>
+			<select name="radius">
+				<option value="1">1 Km</option>
+				<option value="2">2 Km</option>
+				<option value="3">3 Km</option>
+				<option value="4">4 Km</option>
+				<option value="5">5 Km</option>
+				<option value="6">6 Km</option>
+				<option value="7">7 Km</option>
+				<option value="8">8 Km</option>
+				<option value="9">9 Km</option>
+				<option value="10">10 Km</option>
+			</select>
+			<div class="revealbtn">
+				<a class="button" id="creategroup" href="#">Create group</a>	
+			</div>
+		</form>
+		
+		
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+	    	<span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+
+
+
+	<div class="reveal" id="addQuestion" data-reveal>
+		<h3>Ask a Question!</h3>
+		<form>
+			<label for="askquestion">Question</label>
+			<input type="text" placeholder="Write short question..." name="askquestion">
+			<label for="askdescription">Description</label>
+			<textarea rows="5" name="askdescription" placeholder="Describe it a bit more.."></textarea>
+			<label for="askradius">Radius</label>
+			<select name="askradius">
+				<option value="1">1 Km</option>
+				<option value="2">2 Km</option>
+				<option value="3">3 Km</option>
+				<option value="4">4 Km</option>
+				<option value="5">5 Km</option>
+				<option value="6">6 Km</option>
+				<option value="7">7 Km</option>
+				<option value="8">8 Km</option>
+				<option value="9">9 Km</option>
+				<option value="10">10 Km</option>
+			</select>
+			<div class="revealbtn">
+				<a class="button" id="addQuestionbtn" href="#">ask!</a>	
+			</div>
+		</form>
+		
+		
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+	    	<span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+
+
+
+
+	<!--//////////////////////  No reveals below this point  //////////////////////-->
+
+
 	<div class="title-bar">
-	    <span class="title-bar-title">Vishal Garg</span>
+	  <div class="title-bar-left">
+	  	<a class="toggleModal" data-open="addQuestion">Ask Question</a>
+	  	<a class="toggleModal" data-open="addgroup">Create group</a>
+	  </div>
 	  <div class="title-bar-right">
+	    <span class="title-bar-title">User</span>
 	    <a><i class="fa fa-power-off" data-toggle="shutdown" aria-hidden="true"></i></a>
 	  </div>
 	</div>
@@ -103,11 +214,7 @@
 
 
 			<div id="pane3" class="pane-stack">
-				<div class="fabbtn" data-open="addgroup">
-				  <div class="fab-icon">
-				    +
-				  </div>
-				 </div>
+				 
 			</div>
 
 
@@ -123,38 +230,6 @@
 		</div>
 
 	</div><!-- grid end -->
-
-
-<div class="reveal" id="addgroup" data-reveal>
-	<h3>Create new group</h3>
-	<form>
-		<label for="groupname">Group name</label>
-		<input type="text" placeholder="Write your question" name="groupname">
-		<label for="description">Description</label>
-		<textarea rows="5" name="description" placeholder="What is the group about?"></textarea>
-		<label for="radius">Radius</label>
-		<select name="radius">
-			<option value="1">1 Km</option>
-			<option value="2">2 Km</option>
-			<option value="3">3 Km</option>
-			<option value="4">4 Km</option>
-			<option value="5">5 Km</option>
-			<option value="6">6 Km</option>
-			<option value="7">7 Km</option>
-			<option value="8">8 Km</option>
-			<option value="9">9 Km</option>
-			<option value="10">10 Km</option>
-		</select>
-		<div class="revealbtn">
-			<a class="button" id="creategroup" href="#">Create group</a>	
-		</div>
-	</form>
-	
-	
-	<button class="close-button" data-close aria-label="Close modal" type="button">
-    	<span aria-hidden="true">&times;</span>
-  </button>
-</div>
 
 
 

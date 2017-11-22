@@ -27,6 +27,10 @@ table tbody tr:nth-child(even){
   background-color: #1E222B;
 }
 
+.title-bar-title{
+  margin-right: 0.8rem;
+}
+
 .hero-full-screen {
   height: 70vh;
   display: -webkit-flex;
@@ -271,13 +275,13 @@ table tbody tr:nth-child(even){
   height: 50px;
 }
 
-#inputbar{
+#inputbar,#inputbarask{
   height: 3.4rem;
   border-radius: 5px;
   margin: 0;
 }
 
-#sendbtn{
+#sendbtn,#sendreplies{
   border-radius: 5px;
 }
 
@@ -530,7 +534,7 @@ table tbody tr:nth-child(even){
   vertical-align: middle; 
 }
 
-#addgroup{
+#addgroup,#addQuestion{
   background-color: rgba(0,0,0,0.8);
   padding: 1.5rem;
   border-radius: 1.2rem;
@@ -538,22 +542,22 @@ table tbody tr:nth-child(even){
   box-shadow: 0px 4px 10px 0px #000;
 }
 
-#addgroup>h3{
+#addgroup>h3,#addQuestion>h3{
   text-align: center;
   color: white;
   font-family: 'Quicksand', sans-serif;
 }
 
-#addgroup>input, #addgroup>textarea, #addgroup>select{
+#addgroup>input,#addQuestion>input, #addgroup>textarea,#addQuestion>textarea, #addgroup>select,#addQuestion>select{
   border-radius: 0.5rem;
 }
 
-#addgroup>button{
+#addgroup>button, #addQuestion>button{
   color: white;
   font-size: 1.8rem;
 }
 
-#addgroup>label{
+#addgroup>label, #addQuestion>label{
   color: white;
   font-family: 'Quicksand', sans-serif;
   font-size: 1.2rem;
@@ -596,6 +600,8 @@ textarea{
 
 .card-flex-article .card-divider .avatar {
   margin-right: 0.75rem;
+  height: 35px;
+  width: 35px;
 }
 
 .card-flex-article .avatar {
@@ -718,4 +724,29 @@ h3.repliestag{
 
 #pane1{
   background-color: transparent;
+}
+
+.questioncard{
+  cursor: pointer;
+}
+
+.toggleModal{
+  display: inline-block;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.1rem;  
+  padding: 0.2rem 0.8rem;
+  color: white;
+  border-radius: 2px;
+}
+
+.toggleModal:hover,.toggleModal:active{
+  color: white;
+}
+
+.toggleModal:nth-of-type(1){
+  background-color: #F03434;
+}
+
+.toggleModal:nth-of-type(2){
+  background-color: #59ABE3;
 }

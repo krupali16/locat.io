@@ -17,7 +17,6 @@ $(document).ready(function()
             sendMsg(localStorage.getItem('activeidentifier'), $('#inputbar').val())
         }
         $('#inputbar').val('')
-        document.getElementById('askscroller').scrollTop = document.getElementById('askscroller').scrollHeight;
     });
 
 
@@ -218,5 +217,30 @@ $(document).ready(function()
             alert('Enter details correctly.')
         }
     })
+
+
+
+    $(document).on('click','#addQuestionbtn', function(){
+        var question = $('input[name=askquestion]').val();
+        var description =  $('textarea[name=askdescription]').val();
+        var radius= $('select[name=askradius]').val();
+        if($.trim(question)!='' &&  $.trim(description)!='' && (radius>=1 && radius<=10)){
+            saveQuestion(question, description, radius);
+            $('form')[0].reset();
+        }
+        else{
+            alert('Enter details correctly.')
+        }
+    })
+
+
+
+    $('.title-bar-title').text(localStorage.getItem('googlename'))
+
+    $(document).on('click','#confirmsignout', function(){
+        signout();
+    })
+
+
     //end of onready
 });

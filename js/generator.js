@@ -1,7 +1,7 @@
 var nearbygenerator = function(object){
 	var html = 
 	'<li class="listcard nearbylist" title="tap to join the group" ' + "data-identifier=" + object['uniqueidentifier'] + '>' + 
-		'<span class="listcard-image"><img src="resources/pic1.png"></span>' +
+		'<span class="listcard-image"><img src="' + (object.image_url=="default"? 'http://placehold.it/150x150': object[0].image_url) + '"></span>' +
 		'<div class="listcard-content">' + 
 			'<span class="leftcontent">' + 
 				'<span class="listcard-title">' + object['groupname'] +  '</span>' + 
@@ -18,7 +18,6 @@ var nearbygenerator = function(object){
 
 
 var joinedListgenerator = function(object){
-	console.log(object)
 		var htmlwithactive = 
 			'<li class="listcard joinedlist active" ' + "data-identifier=" + object[0]['uniqueidentifier'] + '>' + 
 				'<span class="listcard-image"><img src="'+ (object[0].image_url=="default"? 'http://placehold.it/150x150': object[0].image_url)  + '"></span>' +
@@ -63,7 +62,6 @@ var joinedListgenerator = function(object){
 
 
 var messagesGenerator = function(object){
-	console.log(object)
 	if(localStorage.getItem('personalidentifier')!=object.sender_id){
 		var html =
 		'<div class="item left">'+
@@ -112,22 +110,10 @@ localStorage.getItem('currentlocation')+
 '<div class="strip">Set privacy control & visibility</div>'+
 ''+
 ''+
-'<div class="grid-x">'+
-'<div class="small-8 cell">Profile picture visibility</div>'+
-'<div class="small-4 cell">'+
-'<div class="switch">'+
-'<input class="switch-input" id="picturevisibilitytoggle" type="checkbox" ' +(object['profile_image_visibility']? 'checked':'') + '  name="exampleSwitch" data-toggle-all>'+
-'<label class="switch-paddle" for="picturevisibilitytoggle">'+
-'</label>'+
-'</div>'+
-'</div>'+
-'</div>'+
-''+
 ''+
 '<div class="grid-x">'+
 '<div class="small-8 cell">'+
 '<select id="gender">'+
-'<option value="" ' + (object['gender']==""? 'selected': '') + ' >Gender</option>'+
 '<option value="Male" ' + (object['gender']=="Male"? 'selected': '') + ' >Male</option>'+
 '<option value="Female ' + (object['gender']=="Female"? 'selected': '') + ' ">Female</option>'+
 '</select>'+
@@ -207,19 +193,19 @@ var askgenerator = function(object){
 			  '<div class="card-section">'+
 			    '<h3 class="article-title">'+ object.questionText + '</h3>'+
 			    '<div class="article-details">'+
-			      '<span class="time">' + new Date(object.timestamp).toLocaleString('en-GB') + '</span>&nbsp;&#8226;'+
-			      '<span class="website">0 views</span>&nbsp;&#8226;'+
-			      '<span class="author">'+ object.answerCount + ' answers</span>'+
+			      '<span class="time"> ' + new Date(object.timestamp).toLocaleString('en-GB') + '</span>&nbsp;&#8226;'+
+			      '<span class="website"> ' + object.views + ' views</span>&nbsp;&#8226;'+
+			      '<span class="author"> '+ object.answerCount + ' answers</span>'+
 			    '</div>'+
 			    '<p class="article-summary">' + object.description + '</p>'+
 			  '</div>'+
 			   '<div class="card-divider align-middle">'+
 			     '<div class="avatar">'+
-			       '<img src="https://placehold.it/35" alt="avatar" />'+
+			       '<img src="' + object.image_url + '" alt="avatar" />'+
 			     '</div>'+
 			    '<div class="user-info">'+
-			      '<p class="user-name">Vishal Garg</p>'+
-			      '<p class="category">Gandhinagar,<strong>Gujarat</strong></p>'+
+			      '<p class="user-name">' + object.userName + '</p>'+
+			      '<p class="category"><strong>Radius</strong>  ' + object.radius + ' Km</p>'+
 			    '</div>'+
 			  '</div>'+
 			'</div>';
@@ -229,6 +215,7 @@ var askgenerator = function(object){
 
 
 var askfullgenerator = function(object){
+	console.log(object)
 	if($('#pane1>.chat.scroll').find('.askquestion').length==0){
 			onlyquestionappender();
 	}
@@ -247,15 +234,22 @@ var askfullgenerator = function(object){
 }
 
 var onlyquestionappender = function(){
+	var activeQuestion = $('.active');
+	var title = $(activeQuestion).find('.article-title').text();
+	var description = $(activeQuestion).find('.article-summary').text();
+	var time = $(activeQuestion).find('.time').text();
+	var count = $(activeQuestion).find('.author').text();
+	var views = $(activeQuestion).find('.website').text();
+
 	var questioncomplete = 
 				'<div class="askquestion">'+
-					'<div class="question-title">This is a question. Or is it?</div>'+
-					'<div class="question-description">This is a description.</div>'+
+					'<div class="question-title">' + title + '</div>'+
+					'<div class="question-description">' + description + '</div>'+
 					'<br />'+
 					'<div class="stat-info">'+
-						'<span><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; 21:36, 21st November, 2017</span>'+
-						'<span><i class="fa fa-eye" aria-hidden="true"></i>&nbsp; 0 views</span>'+
-						'<span><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp; 0 answers</span>'+
+						'<span><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; ' + time +'</span>&nbsp;&nbsp;&nbsp;'+
+						'<span><i class="fa fa-eye" aria-hidden="true"></i>&nbsp; ' + views + ' </span>&nbsp;&nbsp;&nbsp;'+
+						'<span><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp; ' + count + '</span>'+
 					'</div>'+
 				'</div>'+
 				'<div class="askreply">'+

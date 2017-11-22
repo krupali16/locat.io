@@ -1,0 +1,49 @@
+Objectives
+----------
+
+
+--> Why those features?
+
+
+--> Technology why? *points to feasibility report. how tech was decided? MUST READ ALL.*
+
+
+--> Why process model? If changed, which one?
+
+
+--> Feasibility report --> have we mentioned the alt?
+
+
+--> Purpose of SRS?
+
+
+--> what was in project planning that was not part of the srs?
+
+
+--> SRS is for whom? << Understand all artifacts >>
+
+
+--> Read survey.
+
+
+--> Need and benefit of activity diagram[artifacts].
+
+
+--> black box testing. Used where? 
+
+
+--> has the code been written according to diagrams?
+
+
+--> Difference between gantt, and pert chart? PERT detailed
+
+
+--> static analysis - how? {JSLinter} --> need?
+
+
+
+
+-----------------------------------------
+++ Correct multicallback in add new group
+++ Implement signout
+-----------------------------------------
