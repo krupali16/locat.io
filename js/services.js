@@ -238,10 +238,10 @@ function fetchGroups()
                     'uniqueidentifier': groups.group_id,
                     'image_url': groups.image_url
                 }
-                // if(obj.uniqueidentifier!=dupidentity){
+                if(obj.uniqueidentifier!=dupidentity){
                     nearbygenerator(obj);
-                //     dupidentity = obj.uniqueidentifier;
-                // }
+                    dupidentity = obj.uniqueidentifier;
+                }
             }
         });
     }
@@ -454,7 +454,7 @@ function saveAnswer(key, answer)
         });
     })
 }
-
+var askstamp="";
 function listNearByQuestions()
 {
     var ref = firebase.database().ref('questions');
@@ -474,7 +474,10 @@ function listNearByQuestions()
             {
                 var value = child.val();
                 value['identifier'] = child.key;
-                askgenerator(value)
+                if(value.identifier!=askstamp){
+                    askgenerator(value)
+                    askstamp = value.identifier;
+                }
             }
         });
     }

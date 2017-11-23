@@ -101,7 +101,7 @@ var settings = '<div class="profile">'+
 (object['hide_profile_visibility']? object['full_name'] : object['display_name']) +
 '</div>'+
 '<div class="userlocation">'+
-localStorage.getItem('currentlocation')+
+"----------"+
 '</div>'+
 '</div>'+
 ''+
