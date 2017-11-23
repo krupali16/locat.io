@@ -162,6 +162,7 @@ function createGroup(group_name, description, radius)
 
         groupsRef.child(group_id).set(group);   
         usersRef.child(group_id).set(true);
+        $('#addgroup').foundation('close');
         alert('Group created.')
     }
 
@@ -209,6 +210,8 @@ function deg2rad(deg)
     return deg * (Math.PI / 180)
 }
 
+
+var dupidentity="";
 function fetchGroups()
 {
     var database = firebase.database();
@@ -235,7 +238,10 @@ function fetchGroups()
                     'uniqueidentifier': groups.group_id,
                     'image_url': groups.image_url
                 }
-                nearbygenerator(obj);
+                // if(obj.uniqueidentifier!=dupidentity){
+                    nearbygenerator(obj);
+                //     dupidentity = obj.uniqueidentifier;
+                // }
             }
         });
     }
@@ -515,6 +521,7 @@ function saveQuestion(question, description, radius)
             userName: localStorage.getItem('personalidentifiername'),
             image_url: image
         });
+        $('#addQuestion').foundation('close');
         alert("saved");
     }
 

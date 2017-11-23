@@ -1,12 +1,7 @@
 $(document).ready(function()
 {
     $(document).foundation();
-   /* $("#dob").flatpickr(
-    {
-        altInput: true,
-        dateFormat: "Y.m.d"
-    });*/
-
+    
 
 
     //for message replies to group
@@ -226,7 +221,7 @@ $(document).ready(function()
         var radius= $('select[name=askradius]').val();
         if($.trim(question)!='' &&  $.trim(description)!='' && (radius>=1 && radius<=10)){
             saveQuestion(question, description, radius);
-            $('form')[0].reset();
+            $('form').reset();
         }
         else{
             alert('Enter details correctly.')
